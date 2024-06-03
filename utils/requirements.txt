@@ -1,0 +1,8 @@
+tensorflow
+pandas
+tabulate
+matplotlib
+hiredis
+ray-2.0.0.dev0-cp36-cp36m-manylinux2014_x86_64.whl
+seaborn
+matplotlib

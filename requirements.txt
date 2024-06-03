@@ -1,0 +1,9 @@
+scipy
+ray>=2.8.0
+jmetal_ray-1-py3-none-any.whl
+numpy==1.24.2
+seaborn==0.12.2
+matplotlib==3.7.0
+pandas==1.5.3
+notebook==7.1.3
+tabulate

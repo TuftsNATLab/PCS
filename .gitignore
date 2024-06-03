@@ -1,0 +1,13 @@
+*.pyc
+*.pyo
+__pycache__
+**pycache__
+__pycache__/common.cpython-36.pyc
+screenlog.0
+*.png
+results/
+simulation/__pycache__
+*.ipynb_checkpoints*
+new_data/*.csv
+new_data/*.pkl
+figures/*.pdf

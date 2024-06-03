@@ -1,0 +1,17 @@
+{
+    "tiresias": {
+        "mean_jct": 11.25,
+        "peak_unfairness": 10,
+        "mean_pred_error": 46
+    },
+    "themis": {
+        "mean_jct": 13.5,
+        "peak_unfairness": 0,
+        "mean_pred_error": 24
+    },
+    "yarn_fifo": {
+        "mean_jct": 15.75,
+        "peak_unfairness": 500,
+        "mean_pred_error": 0
+    }
+}

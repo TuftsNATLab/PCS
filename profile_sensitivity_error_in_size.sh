@@ -1,0 +1,2 @@
+#!/bin/bash
+python3 simulation/run_multiple_sim.py -output_file new_data/size_error_expt.pkl -num_apps 5000 -num_gpus 64 -seeds 4576 968 1209 3560 8910 -p_error 0 5 10 20 30 40 -scheduling_policies FIFO MCS AFS

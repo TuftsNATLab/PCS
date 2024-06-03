@@ -1,0 +1,452 @@
+{
+    "arrivals": [
+        {
+            "job": "J1",
+            "size": 10,
+            "time": 0
+        },
+        {
+            "job": "J2",
+            "size": 8,
+            "time": 0
+        },
+        {
+            "job": "J3",
+            "size": 1,
+            "time": 1
+        },
+        {
+            "job": "J4",
+            "size": 8,
+            "time": 10
+        }
+    ],
+    "tiresias": [
+        {
+            "predictions": {
+                "J1": 10
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 10
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J2": 8,
+                "J1": 18
+            },
+            "schedule": [
+                {
+                    "job": "J2",
+                    "start": 0,
+                    "end": 8
+                },
+                {
+                    "job": "J1",
+                    "start": 8,
+                    "end": 18
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J3": 2,
+                "J1": 19,
+                "J2": 9
+            },
+            "schedule": [
+                {
+                    "job": "J2",
+                    "start": 0,
+                    "end": 1
+                },
+                {
+                    "job": "J3",
+                    "start": 1,
+                    "end": 2
+                },
+                {
+                    "job": "J2",
+                    "start": 2,
+                    "end": 9
+                },
+                {
+                    "job": "J1",
+                    "start": 9,
+                    "end": 19
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J4": 18,
+                "J1": 27,
+                "J2": 9,
+                "J3": 2
+            },
+            "schedule": [
+                {
+                    "job": "J2",
+                    "start": 0,
+                    "end": 1
+                },
+                {
+                    "job": "J3",
+                    "start": 1,
+                    "end": 2
+                },
+                {
+                    "job": "J2",
+                    "start": 2,
+                    "end": 9
+                },
+                {
+                    "job": "J1",
+                    "start": 9,
+                    "end": 10
+                },
+                {
+                    "job": "J4",
+                    "start": 10,
+                    "end": 18
+                },
+                {
+                    "job": "J1",
+                    "start": 18,
+                    "end": 27
+                }
+            ]
+        }
+    ],
+    "themis": [
+        {
+            "predictions": {
+                "J1": 10
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 10
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J2": 15,
+                "J1": 18
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 3
+                },
+                {
+                    "job": "J2",
+                    "start": 3,
+                    "end": 5
+                },
+                {
+                    "job": "J1",
+                    "start": 5,
+                    "end": 6
+                },
+                {
+                    "job": "J2",
+                    "start": 6,
+                    "end": 8
+                },
+                {
+                    "job": "J1",
+                    "start": 8,
+                    "end": 9
+                },
+                {
+                    "job": "J2",
+                    "start": 9,
+                    "end": 10
+                },
+                {
+                    "job": "J1",
+                    "start": 10,
+                    "end": 11
+                },
+                {
+                    "job": "J2",
+                    "start": 11,
+                    "end": 13
+                },
+                {
+                    "job": "J1",
+                    "start": 13,
+                    "end": 14
+                },
+                {
+                    "job": "J2",
+                    "start": 14,
+                    "end": 15
+                },
+                {
+                    "job": "J1",
+                    "start": 15,
+                    "end": 18
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J3": 3,
+                "J1": 19,
+                "J2": 16
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 2
+                },
+                {
+                    "job": "J3",
+                    "start": 2,
+                    "end": 3
+                },
+                {
+                    "job": "J2",
+                    "start": 3,
+                    "end": 5
+                },
+                {
+                    "job": "J1",
+                    "start": 5,
+                    "end": 6
+                },
+                {
+                    "job": "J2",
+                    "start": 6,
+                    "end": 7
+                },
+                {
+                    "job": "J1",
+                    "start": 7,
+                    "end": 8
+                },
+                {
+                    "job": "J2",
+                    "start": 8,
+                    "end": 9
+                },
+                {
+                    "job": "J1",
+                    "start": 9,
+                    "end": 10
+                },
+                {
+                    "job": "J2",
+                    "start": 10,
+                    "end": 12
+                },
+                {
+                    "job": "J1",
+                    "start": 12,
+                    "end": 13
+                },
+                {
+                    "job": "J2",
+                    "start": 13,
+                    "end": 14
+                },
+                {
+                    "job": "J1",
+                    "start": 14,
+                    "end": 15
+                },
+                {
+                    "job": "J2",
+                    "start": 15,
+                    "end": 16
+                },
+                {
+                    "job": "J1",
+                    "start": 16,
+                    "end": 19
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J4": 27,
+                "J1": 19,
+                "J2": 16,
+                "J3": 3
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 2
+                },
+                {
+                    "job": "J3",
+                    "start": 2,
+                    "end": 3
+                },
+                {
+                    "job": "J2",
+                    "start": 3,
+                    "end": 5
+                },
+                {
+                    "job": "J1",
+                    "start": 5,
+                    "end": 6
+                },
+                {
+                    "job": "J2",
+                    "start": 6,
+                    "end": 7
+                },
+                {
+                    "job": "J1",
+                    "start": 7,
+                    "end": 8
+                },
+                {
+                    "job": "J2",
+                    "start": 8,
+                    "end": 9
+                },
+                {
+                    "job": "J1",
+                    "start": 9,
+                    "end": 10
+                },
+                {
+                    "job": "J2",
+                    "start": 10,
+                    "end": 12
+                },
+                {
+                    "job": "J1",
+                    "start": 12,
+                    "end": 13
+                },
+                {
+                    "job": "J2",
+                    "start": 13,
+                    "end": 14
+                },
+                {
+                    "job": "J1",
+                    "start": 14,
+                    "end": 15
+                },
+                {
+                    "job": "J2",
+                    "start": 15,
+                    "end": 16
+                },
+                {
+                    "job": "J1",
+                    "start": 16,
+                    "end": 19
+                },
+                {
+                    "job": "J4",
+                    "start": 19,
+                    "end": 27
+                }
+            ]
+        }
+    ],
+    "yarn_fifo": [
+        {
+            "predictions": {
+                "J1": 10
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 10
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J2": 18,
+                "J1": 10
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 10
+                },
+                {
+                    "job": "J2",
+                    "start": 10,
+                    "end": 18
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J3": 19,
+                "J1": 10,
+                "J2": 18
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 10
+                },
+                {
+                    "job": "J2",
+                    "start": 10,
+                    "end": 18
+                },
+                {
+                    "job": "J3",
+                    "start": 18,
+                    "end": 19
+                }
+            ]
+        },
+        {
+            "predictions": {
+                "J4": 27,
+                "J1": 10,
+                "J2": 18,
+                "J3": 19
+            },
+            "schedule": [
+                {
+                    "job": "J1",
+                    "start": 0,
+                    "end": 10
+                },
+                {
+                    "job": "J2",
+                    "start": 10,
+                    "end": 18
+                },
+                {
+                    "job": "J3",
+                    "start": 18,
+                    "end": 19
+                },
+                {
+                    "job": "J4",
+                    "start": 19,
+                    "end": 27
+                }
+            ]
+        }
+    ]
+}
