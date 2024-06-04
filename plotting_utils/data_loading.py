@@ -30,6 +30,29 @@ def _load_json(folder, filename):
         return json.load(f)
 
 
+def get_fig1a_json():
+    return _load_json("fig1", "fig1a.json")
+
+
+def get_fig1b_data():
+    data = _load_json("fig1", "fig1b.json")
+    table = list()
+    for scheduler in ["tiresias", "themis", "yarn_fifo"]:
+        table.append(list())
+        for metric in ["mean_jct", "peak_unfairness", "mean_pred_error"]:
+            table[-1].append(data[scheduler][metric])
+    return table
+
+
+def get_table1_data():
+    data = _load_json("table1", "table1.json")
+    table = list()
+    for metric in ["mean_jct", "peak_unfairness", "mean_pred_error", "p99_pred_error"]:
+        table.append(list())
+        for scheduler in ["tiresias", "themis", "yarn_fifo"]:
+            table[-1].append(data[scheduler][metric])
+    return table
+
 def get_fig4_data():
     data = _load_pickle("fig4", "figure4.pkl")
     assert (data[0]["X"] == data[1]["X"]).all() and (data[0]["Y"] == data[1]["Y"]).all()

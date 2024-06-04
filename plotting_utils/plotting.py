@@ -350,7 +350,7 @@ def plot_fig1a():
                     bbox=time_bbox,
                     fontsize=24,
                 )
-                img = mpimg.imread(os.path.join("..", "supplemental", "usericon.png"))
+                img = mpimg.imread(os.path.join(os.path.dirname(__file__), "..", "data", "fig1", "usericon.png"))
                 ax.imshow(img, extent=[2.25, 2.65, 2.8, 3.2])
                 ax.arrow(
                     2.75,
