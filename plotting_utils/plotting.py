@@ -13,7 +13,8 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Rectangle
 matplotlib.rcParams["hatch.linewidth"] = 2.0
 
-
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
 
 output_folder_name = "figures"
 
