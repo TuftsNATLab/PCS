@@ -316,6 +316,174 @@ def create_custom_legend_lines(lines, linewidth=4):
 
     return legend_lines, labels
 
+def plot_fig1a():
+    fig, axes = plt.subplots(
+        nrows=4,
+        ncols=4,
+        figsize=(28, 10),
+        gridspec_kw={
+            "width_ratios": [1, 1, 1, 1],
+            "height_ratios": [1 / 3, 1, 1, 2 / 3],
+        },
+    )
+    data = dl.get_fig1a_json()
+    for row, scheduler in enumerate(["titles", "tiresias", "themis", "yarn_fifo"]):
+        for idx in range(4):
+            ax = axes[row, idx]
+            ax.set_yticklabels([])
+            ax.set_yticks([])
+            ax.set_xticks([])
+            ax.set_xticklabels([])
+            ax.spines["top"].set_visible(False)
+            ax.spines["right"].set_visible(False)
+            ax.spines["left"].set_visible(False)
+            ax.spines["bottom"].set_visible(False)
+            arrival = data["arrivals"][idx]
+            if scheduler == "titles":
+                time_bbox = {"facecolor": "white", "edgecolor": "black", "pad": 5}
+                ax.text(
+                    1.7,
+                    3,
+                    f'Time {arrival["time"]}',
+                    ha="center",
+                    va="center",
+                    bbox=time_bbox,
+                    fontsize=24,
+                )
+                img = mpimg.imread(os.path.join("..", "supplemental", "usericon.png"))
+                ax.imshow(img, extent=[2.25, 2.65, 2.8, 3.2])
+                ax.arrow(
+                    2.75,
+                    3,
+                    0.2,
+                    0,
+                    width=0.05,
+                    head_width=0.2,
+                    head_length=0.1,
+                    length_includes_head=True,
+                    color="black",
+                )
+                arrival_bbox = {
+                    "facecolor": FIG1A_JOB_COLORS[arrival["job"]],
+                    "edgecolor": "none",
+                    "pad": 3,
+                }
+                ax.text(
+                    3.1,
+                    3,
+                    arrival["job"],
+                    ha="center",
+                    va="center",
+                    bbox=arrival_bbox,
+                    fontsize=22,
+                    color=FIG1A_JOB_TEXT_COLORS[arrival["job"]],
+                )
+                ax.text(
+                    3.65,
+                    3,
+                    f'Size: {arrival["size"]}',
+                    ha="center",
+                    va="center",
+                    fontsize=22,
+                )
+                continue
+            ax.set_aspect("equal")
+            if scheduler != "yarn_fifo":
+                ax.spines["bottom"].set_visible(False)
+            preds = data[scheduler][idx]["predictions"]
+            _pred_job(
+                ax, arrival["job"], 0.5, preds[arrival["job"]], idx, data, scheduler
+            )
+            for i, (j, jct) in zip([0.5, 2.75, 5, 7.25], preds.items()):
+                if j == arrival["job"]:
+                    continue
+                _pred_job(ax, j, i, jct, idx, data, scheduler)
+            ax.spines["top"].set_visible(False)
+            ax.spines["right"].set_visible(False)
+            ax.spines["left"].set_visible(False)
+            if idx == 0:
+                ax.set_ylabel(_make_axis_label(scheduler), fontsize=32)
+            if scheduler == "yarn_fifo":
+                ax.set_xticks([0, 3, 6, 9])
+                ax.set_xticklabels([0, 9, 18, 27], fontsize=24)
+            for c in data[scheduler][idx]["schedule"]:
+                first = c["start"] / 3
+                last = c["end"] / 3
+                ax.fill(
+                    [first, last, last, first],
+                    [0, 0, 1, 1],
+                    color=FIG1A_JOB_COLORS[c["job"]],
+                    linewidth=0.1,
+                    edgecolor=FIG1A_JOB_COLORS[c["job"]],
+                )
+            if last < 9:
+                ax.fill(
+                    [last, 9, 9, last],
+                    [0, 0, 1, 1],
+                    fill=False,
+                    hatch="//",
+                    linewidth=0.1,
+                )
+            ax.fill([0, 9, 9, 0], [0, 0, 1, 1], fill=False, facecolor=None)
+    fig.add_artist(plt.Line2D((0.1, 0.9), (0.6, 0.6), lw=2, color="black"))
+    fig.add_artist(plt.Line2D((0.1, 0.9), (0.33, 0.33), lw=2, color="black"))
+    _save_image("figures", f"fig1a.pdf")
+
+def plot_fig1b(value_font_size=28, better_font_size=22):
+    COLORSET = list(sns.color_palette("Greys").as_hex())[::-1]
+    TITLES = ["Avg\nJCT (hr)", "Peak\nUnfair (%)", "Avg Pred\nErr (%)"]
+    data = dl.get_fig1b_data()
+    colors = [
+        [COLORSET[0], COLORSET[2], COLORSET[-1]],
+        [COLORSET[2], COLORSET[0], COLORSET[2]],
+        [COLORSET[-1], COLORSET[-1], COLORSET[0]],
+    ]
+    textcolors = [
+        ["white", "black", "black"],
+        ["black", "white", "black"],
+        ["black", "black", "white"],
+    ]
+    fig = plt.figure(constrained_layout=True, figsize=(4.5, 6))
+    gs = GridSpec(4, 3, figure=fig, height_ratios=[1, 1, 1, 1 / 6])
+    ax = [[None, None, None], [None, None, None], [None, None, None]]
+    for i in range(3):
+        for j in range(3):
+            ax[i][j] = fig.add_subplot(gs[i, j])
+    lastax = fig.add_subplot(gs[-1, :])
+    for i in range(3):
+        for j in range(3):
+            rect = plt.Rectangle((0, 0.3), 1, 0.4, linewidth=2, facecolor=colors[i][j])
+            ax[i][j].text(
+                0.5,
+                0.5,
+                data[i][j],
+                horizontalalignment="center",
+                verticalalignment="center",
+                fontsize=value_font_size,
+                color=textcolors[i][j],
+            )
+            ax[i][j].add_patch(rect)
+            ax[i][j].set_xlim([0, 1])
+            ax[i][j].set_ylim([0, 1])
+            ax[i][j].tick_params(axis="both", which="both", length=0)
+            ax[i][j].spines["top"].set_visible(False)
+            ax[i][j].spines["right"].set_visible(False)
+            ax[i][j].spines["bottom"].set_visible(False)
+            ax[i][j].spines["left"].set_visible(False)
+            ax[i][j].set_axis_off()
+            if i == 0:
+                ax[i][j].set_title(TITLES[j], fontsize=22)
+    a = np.array([[0, 30]])
+    img = lastax.imshow(a, cmap=sns.color_palette("Greys", as_cmap=True))
+    bar = fig.colorbar(img, cax=lastax, orientation="horizontal")
+    lastax.tick_params(axis="y", which="major", length=0)
+    bar.set_ticks([])
+    bar.set_ticklabels([])
+    bar.set_label("Better" + r"$\longrightarrow$", fontsize=better_font_size)
+    _save_image("tables", "fig1b.pdf")
+
+
+
 
 def plot_fig4():
     data = dl.get_fig4_data()
