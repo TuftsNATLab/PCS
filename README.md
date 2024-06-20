@@ -50,6 +50,8 @@
 * Run `python3 reproduce.py -h` to see which traces and workloads are acceptable for correct usage. 
 * It will also show you additional simulation configuration parameters.
 
+## Paper
+The PDF of the paper is also available
 
 
 # Navigating the Interface
